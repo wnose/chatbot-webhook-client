@@ -76,7 +76,7 @@ class Client {
             }
             let payload = {};
             if ('card' === template) {
-                payload = __nccwpck_require__(7101);
+                payload = __nccwpck_require__(6784);
                 return { app, webhook, secret, payload };
             }
             const templateIsFileURI = (template !== null && template !== void 0 ? template : '').startsWith('file://');
@@ -65997,6 +65997,14 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 6784:
+/***/ ((module) => {
+
+module.exports = eval("require")("./.template/lark-card.json");
+
+
+/***/ }),
+
 /***/ 3345:
 /***/ ((module) => {
 
@@ -66017,14 +66025,6 @@ module.exports = eval("require")("encoding");
 /***/ ((module) => {
 
 module.exports = eval("require")("stream/web");
-
-
-/***/ }),
-
-/***/ 7101:
-/***/ ((module) => {
-
-module.exports = eval("require")("template/lark-card.json");
 
 
 /***/ }),
