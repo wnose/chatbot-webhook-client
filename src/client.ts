@@ -73,8 +73,8 @@ export class Client {
     if ('card' === template && params) {
       const paramDict = JSON.parse(params);
       payload = require('.template/lark-card.json');
-      template = JSON.stringify(payload).replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
-      template = template.replace(/\$\{(.*?)\}/g, (_, key) => {
+      template = JSON.stringify(payload);
+      template = template.replace(/\$\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
         const value = paramDict[key.trim()];
         return value !== undefined ? value : `\${${key}}`;
       });
