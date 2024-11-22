@@ -80,7 +80,12 @@ class Client {
                 payload = __nccwpck_require__(6784);
                 template = JSON.stringify(payload);
                 template = new Function('params', `return \`${template}\``)(paramDict);
-                payload = JSON.parse(template);
+                try {
+                    payload = JSON.parse(template);
+                }
+                catch (err) {
+                    throw new Error('Parameter template must be a JSON object or a file URI. JSON parse error: ' + template);
+                }
                 return { app, webhook, secret, payload };
             }
             const templateIsFileURI = (template !== null && template !== void 0 ? template : '').startsWith('file://');
