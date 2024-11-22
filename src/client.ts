@@ -69,12 +69,16 @@ export class Client {
       throw new Error('Parameter webhook must be a URL');
     }
 
+    let payload: Body = {};
+    if ('card' === template) {
+      payload = require('template/lark-card.json');
+      return { app, webhook, secret, payload };
+    }
+
     const templateIsFileURI = (template ?? '').startsWith('file://');
     if (templateIsFileURI && (!params || !githubToken)) {
       throw new Error('Parameter params and parameter githubToken is required when template is a file URI');
     }
-
-    let payload: Body = {};
     // template maybe a json object or a file URI
     if (templateIsFileURI && params && githubToken) {
       const paramDict = JSON.parse(params);
