@@ -4,28 +4,28 @@
     "elements": [{
       "tag": "div",
       "text": {
-        "content": "**Repository**\nName: ${params.repository}\nBranch: ${params.ref_name}",
+        "content": "**Repository**\\nName: ${params.repository}\\nBranch: ${params.ref_name}",
         "tag": "lark_md"
       }
     },
       {
         "tag": "div",
         "text": {
-          "content": "**Event**\n${params.event_name}",
+          "content": "**Event**\\n${params.event_name}",
           "tag": "lark_md"
         }
       },
       {
         "tag": "div",
         "text": {
-          "content": "**Message**\nCommit ID: ${params.short_sha} \nCommit Message: ${params.commit_message}",
+          "content": "**Message**\\nCommit ID: ${params.short_sha} \\nCommit Message: ${params.commit_message}",
           "tag": "lark_md"
         }
       },
       {
         "tag": "div",
         "text": {
-          "content": "**Operator**\n${params.actor}",
+          "content": "**Operator**\\n${params.actor}",
           "tag": "lark_md"
         }
       }],
