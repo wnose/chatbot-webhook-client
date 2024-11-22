@@ -79,7 +79,6 @@ class Client {
                 const paramDict = JSON.parse(params);
                 payload = __nccwpck_require__(6784);
                 template = JSON.stringify(payload);
-                template = template.replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
                 template = new Function('params', `return \`${template}\``)(paramDict);
                 payload = JSON.parse(template);
                 return { app, webhook, secret, payload };
