@@ -78,6 +78,7 @@ export class Client {
         const value = paramDict[key.trim()];
         return value !== undefined ? value : `\${${key}}`;
       });
+      console.log('111', template);
       payload = JSON.parse(template);
       return { app, webhook, secret, payload };
     }
