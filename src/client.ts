@@ -74,7 +74,10 @@ export class Client {
       const paramDict = JSON.parse(params);
       payload = require('.template/lark-card.json');
       template = JSON.stringify(payload).replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
-      template = new Function('params', `return \`${template}\``)(paramDict);
+      template = template.replace(/\$\{(.*?)\}/g, (_, key) => {
+        const value = paramDict[key.trim()];
+        return value !== undefined ? value : `\${${key}}`;
+      });
       payload = JSON.parse(template);
       return { app, webhook, secret, payload };
     }
