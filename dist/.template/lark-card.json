@@ -1,0 +1,39 @@
+{
+  "msg_type": "interactive",
+  "card": {
+    "elements": [{
+      "tag": "div",
+      "text": {
+        "content": "**Repository**\nName: ${{repository}}\nBranch: ${{ref_name}}",
+        "tag": "lark_md"
+      }
+    },
+      {
+        "tag": "div",
+        "text": {
+          "content": "**Event**\n${{event_name}}",
+          "tag": "lark_md"
+        }
+      },
+      {
+        "tag": "div",
+        "text": {
+          "content": "**Message**\nCommit ID: ${{short_sha}} \nCommit Message: ${{commit_message}}",
+          "tag": "lark_md"
+        }
+      },
+      {
+        "tag": "div",
+        "text": {
+          "content": "**Operator**\n${{actor}}",
+          "tag": "lark_md"
+        }
+      }],
+    "header": {
+      "title": {
+        "content": "Repository-Notify",
+        "tag": "plain_text"
+      }
+    }
+  }
+}
