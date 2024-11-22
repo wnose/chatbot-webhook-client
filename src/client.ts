@@ -71,7 +71,7 @@ export class Client {
 
     let payload: Body = {};
     if ('card' === template) {
-      payload = require('./.template/lark-card.json');
+      payload = require('.template/lark-card.json');
       return { app, webhook, secret, payload };
     }
 
