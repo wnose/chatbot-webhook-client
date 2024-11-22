@@ -75,8 +75,12 @@ class Client {
                 throw new Error('Parameter webhook must be a URL');
             }
             let payload = {};
-            if ('card' === template) {
-                payload = __nccwpck_require__(6784);
+            if ('card' === template && params) {
+                const paramDict = JSON.parse(params);
+                payload = __nccwpck_require__(803);
+                template = JSON.stringify(payload).replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
+                template = new Function('params', `return \`${template}\``)(paramDict);
+                payload = JSON.parse(template);
                 return { app, webhook, secret, payload };
             }
             const templateIsFileURI = (template !== null && template !== void 0 ? template : '').startsWith('file://');
@@ -65997,10 +66001,10 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 6784:
+/***/ 803:
 /***/ ((module) => {
 
-module.exports = eval("require")("./.template/lark-card.json");
+module.exports = eval("require")(".template/lark-card.json");
 
 
 /***/ }),
