@@ -70,8 +70,12 @@ export class Client {
     }
 
     let payload: Body = {};
-    if ('card' === template) {
+    if ('card' === template && params) {
+      const paramDict = JSON.parse(params);
       payload = require('.template/lark-card.json');
+      template = JSON.stringify(payload).replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
+      template = new Function('params', `return \`${template}\``)(paramDict);
+      payload = JSON.parse(template);
       return { app, webhook, secret, payload };
     }
 
