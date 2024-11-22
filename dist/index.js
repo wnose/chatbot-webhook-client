@@ -77,13 +77,10 @@ class Client {
             let payload = {};
             if ('card' === template && params) {
                 const paramDict = JSON.parse(params);
-                payload = __nccwpck_require__(803);
+                payload = __nccwpck_require__(6784);
                 template = JSON.stringify(payload);
-                template = template.replace(/\$\{(.*?)\}/g, (_, key) => {
-                    const value = paramDict[key.trim()];
-                    return value !== undefined ? value : `\${${key}}`;
-                });
-                console.log('111', template);
+                template = template.replace(/\$\{(.*?)\}/g, (_, f) => `\${params.${f}}`);
+                template = new Function('params', `return \`${template}\``)(paramDict);
                 payload = JSON.parse(template);
                 return { app, webhook, secret, payload };
             }
@@ -66005,10 +66002,10 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 803:
+/***/ 6784:
 /***/ ((module) => {
 
-module.exports = eval("require")(".template/lark-card.json");
+module.exports = eval("require")("./.template/lark-card.json");
 
 
 /***/ }),
