@@ -15,5 +15,8 @@ lib
 # Vscode
 .vscode
 
+.idea
+pnpm-lock.yaml
+
 # test
 __tests__
